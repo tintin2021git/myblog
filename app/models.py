@@ -1,16 +1,11 @@
 from django.db import models
 
-# Create your models here.
-# blog
-class Blog(models.Model):
-    title = models.CharField('タイトル', max_length=255)
-    content = models.TextField('内容')
-    update_at = models.DateTimeField('更新日', auto_now=True)
-    create_at = models.DateTimeField('作成日', auto_now_add=True)
 
-    class Meta:
-        verbose_name = 'ブログ'
-        verbose_name_plural = 'ブログ'
+class Post(models.Model):
+    title = models.CharField('タイトル', max_length=50)
+    image = models.ImageField(upload_to='images', verbose_name='イメージ画像')
+    content = models.TextField('本文')
+    created_at = models.DateTimeField('作成日', auto_now_add=True)
 
-    def __str__(self) -> str:
+    def __str__(self):
         return self.title

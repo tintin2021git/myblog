@@ -1,8 +1,10 @@
 from rest_framework import serializers
-from .models import Blog
+from .models import Post
 
-# blog
-class BlogSerializer(serializers.ModelSerializer):
+
+class PostSerializer(serializers.ModelSerializer):
+    created_at = serializers.DateTimeField(format="%Y-%m-%d %H:%M")
+
     class Meta:
-        model = Blog
-        fields = '__all__'
+        model = Post
+        fields = ('id', 'title', 'image', 'content', 'created_at')

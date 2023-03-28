@@ -1,14 +1,14 @@
-from rest_framework.generics import ListAPIView, RetrieveAPIView
-from .serializers import BlogSerializer
-from .models import Blog
+from rest_framework import generics
+from .serializers import PostSerializer
+from .models import Post
 # Create your views here.
 
-# blog
-class BlogListView(ListAPIView):
-    queryset = Blog.objects.order_by('-create_at')
-    serializer_class = BlogSerializer
+# Post
+class PostView(generics.ListAPIView):
+    queryset = Post.objects.all()
+    serializer_class = PostSerializer
 
-# blog detail
-class BlogDetailView(RetrieveAPIView):
-    queryset = Blog.objects.all()
-    serializer_class = BlogSerializer
+# Post detail
+class PostDetailView(generics.RetrieveAPIView):
+    queryset = Post.objects.all()
+    serializer_class = PostSerializer
